@@ -174,7 +174,7 @@ namespace Microsoft.Teams.Apps.ScrumStatus.Common
             this.logger.LogInformation($"Scheduling storage to get scrum master details. Count: {count}");
 
             // Schedule storage call hourly.
-            CronExpression storageCronExpression = CronExpression.Parse("0 */1 * * *");
+            CronExpression storageCronExpression = CronExpression.Parse("*/5 * * * *");
             var next = storageCronExpression.GetNextOccurrence(DateTimeOffset.Now, TimeZoneInfo.Local);
             if (next.HasValue)
             {
