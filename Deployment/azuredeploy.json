@@ -77,6 +77,17 @@
         "description": "The pricing tier for the hosting plan."
       }
     },
+    "Export": {
+      "type": "string",
+      "allowedValues": [
+        "Yes",
+        "No"
+      ],
+      "defaultValue": "Yes",
+      "metadata": {
+        "description": "Export the scrum details of last 30 days."
+      }
+    },
     "planSize": {
       "type": "string",
       "allowedValues": [
@@ -181,10 +192,6 @@
           "alwaysOn": true,
           "appsettings": [
             {
-              "name": "SITE_ROLE",
-              "value": "bot"
-            },
-            {
               "name": "Logging:LogLevel:Default",
               "value": "Information"
             },
@@ -207,6 +214,10 @@
             {
               "name": "MicrosoftAppId",
               "value": "[parameters('botClientId')]"
+            },
+            {
+              "name": "IsArchivalActive",
+              "value": "[parameters('Export')]"
             },
             {
               "name": "MicrosoftAppPassword",
