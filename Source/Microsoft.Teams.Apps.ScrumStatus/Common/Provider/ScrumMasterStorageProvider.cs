@@ -117,8 +117,8 @@ namespace Microsoft.Teams.Apps.ScrumStatus.Common
                 int nextHour = DateTime.UtcNow.AddHours(1).Hour;
                 await this.EnsureInitializedAsync();
                 string isActiveFilter = TableQuery.GenerateFilterConditionForBool(nameof(ScrumMaster.IsActive), QueryComparisons.Equal, true);
-                string timeFilter = TableQuery.GenerateFilterConditionForInt(nameof(ScrumMaster.StartTimeUTCHour), QueryComparisons.Equal, nextHour);
-                var query = new TableQuery<ScrumMaster>().Where($"{isActiveFilter} and {timeFilter}");
+                // string timeFilter = TableQuery.GenerateFilterConditionForInt(nameof(ScrumMaster.StartTimeUTCHour), QueryComparisons.Equal, nextHour);
+                var query = new TableQuery<ScrumMaster>().Where($"{isActiveFilter}");
                 return await this.CloudTable.ExecuteQuerySegmentedAsync(query, null);
             }
             catch (Exception ex)
